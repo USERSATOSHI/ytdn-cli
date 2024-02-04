@@ -4,8 +4,7 @@
 
 ## Installation
 
-> clone the repo and run `pnpm i -g` to install the dependencies.
->
+> clone the repo and run `npm i` to install the dependencies. then run `npm i -g` to install the cli globally
 
 ## Usage
 

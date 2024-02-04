@@ -1,6 +1,7 @@
 import { parentPort } from "worker_threads";
 import { downloadVideo } from "./utils.js";
-
+import ffmpeg from "fluent-ffmpeg";
+import { unlinkSync } from "fs";
 parentPort.on("message", async (message) => {
     const n = message.length;
     let i = 0;

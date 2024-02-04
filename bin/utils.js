@@ -119,9 +119,9 @@ export const downloadAudio = async (videoIdorUrl, path) => {
             const id = parseId(videoIdorUrl);
             const info = await yt.getBasicInfo(id);
 
-            const audiostream = await yt.download(id, {
+            const audiostream =  await yt.download(id, {
                 type: "audio",
-                quality: "highestaudio",
+                quality: "best",
             });
 
             const aw = createWriteStream(
@@ -220,7 +220,7 @@ export const downloadPlaylist = async (playlistUrl, path) => {
     const chunks = chunkify(datas, cpus);
     let workersCompleted = 0;
     chunks.forEach((chunk, i) => {
-        const worker = new Worker("./bin/worker.js");
+        const worker = new Worker(import.meta.dirname+"/worker.js");
         worker.postMessage(chunk);
         worker.on("message", async (message) => {
             workersCompleted += 1;
